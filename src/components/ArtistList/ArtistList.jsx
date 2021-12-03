@@ -7,10 +7,10 @@ function ArtistList({ refreshArtists, artistList }) {
     <div>
       <table>
         <tbody>
-          {artistList.map((artist, i) => {
+          {artistList.map((artist) => {
             return (
               <ArtistListItem
-                key={i}
+                key={artist.id}
                 refreshArtists={refreshArtists}
                 artist={artist}
               />
