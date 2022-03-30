@@ -1,9 +1,9 @@
 // artist.data.js
 
 const artists = [
-  { id: 1, name: 'Picasso' },
-  { id: 2, name: 'Van Gogh' },
-  { id: 3, name: 'Frida Kahlo' },
+  { id: 0, name: 'Picasso' },
+  { id: 1, name: 'Van Gogh' },
+  { id: 2, name: 'Frida Kahlo' },
 ];
 
 module.exports = artists;
