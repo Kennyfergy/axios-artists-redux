@@ -24,7 +24,6 @@ For this activity you'll be adding Redux to the famous artists project. Redux ha
 
 ## Stretch
 
-- [ ] Remove the `for` loop in `ArtistList` and replace it with a `.map`
 - [ ] Implement the delete route on the **server** using `.filter()`.
 - [ ] Add additional properties to the form.
 - [ ] Style with Material UI & make the *home* page look spiffy with an image.

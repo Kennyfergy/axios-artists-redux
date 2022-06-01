@@ -1,20 +1,24 @@
 import React from 'react';
 import axios from 'axios';
 
-function ArtistListItem(props) {
+function ArtistListItem({ refreshArtists, artist }) {
 
   const deleteArtist = () => {
     axios({
       method: 'DELETE',
-      url: `/artist/${props.artist.id}`,
+      url: `/artist/${artist.id}`
     })
-    .then( response => { props.refreshArtists() })
-    .catch( error => { console.log('error on delete: ', error) })
-  }
+      .then((response) => { 
+        refreshArtists() 
+      })
+      .catch((error) => {
+        console.log('error on delete: ', error)
+      })
+  };
 
   return (
     <tr>
-      <td>{props.artist.name}</td>
+      <td>{artist.name}</td>
       <td>
         <button onClick={deleteArtist}>DELETE</button>
       </td>
