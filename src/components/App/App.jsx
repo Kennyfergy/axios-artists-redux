@@ -4,6 +4,7 @@ import "./App.css";
 import axios from "axios";
 import ArtistList from "../ArtistList/ArtistList";
 import { useDispatch } from "react-redux";
+import ArtistForm from "../ArtistForm/ArtistForm";
 
 function App() {
   // TODO - remove this local state and replace with Redux state
@@ -35,6 +36,13 @@ function App() {
         console.log("error on GET", error);
       });
   };
+  // POST data
+  const addArtist = (artist) => {
+    axios
+      .post("/artist", { name: "artist" })
+      .then((response) => refreshArtists())
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div className="App">
@@ -43,6 +51,7 @@ function App() {
       </header>
       <p>Welcome to our collection of amazing artists!</p>
       <ArtistList />
+      <ArtistForm addArtist={addArtist} />
     </div>
   );
 }
