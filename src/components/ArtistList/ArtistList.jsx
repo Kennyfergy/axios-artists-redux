@@ -1,20 +1,16 @@
-import React from 'react';
-import ArtistListItem from '../ArtistListItem/ArtistListItem';
+import React from "react";
+import ArtistListItem from "../ArtistListItem/ArtistListItem";
+import { useSelector } from "react-redux";
 
-function ArtistList({ refreshArtists, artistList }) {
+function ArtistList() {
+  const artList = useSelector((store) => store.artistReducer);
 
   return (
     <div>
       <table>
         <tbody>
-          {artistList.map((artist) => {
-            return (
-              <ArtistListItem
-                key={artist.id}
-                refreshArtists={refreshArtists}
-                artist={artist}
-              />
-            );
+          {artList.map((artist, i) => {
+            return <ArtistListItem key={i} artist={artist} />;
           })}
         </tbody>
       </table>
