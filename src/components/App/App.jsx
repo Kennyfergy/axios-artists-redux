@@ -1,42 +1,31 @@
-// App.js
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
 import ArtistList from "../ArtistList/ArtistList";
 import { useDispatch } from "react-redux";
 import ArtistForm from "../ArtistForm/ArtistForm";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 function App() {
-  // TODO - remove this local state and replace with Redux state
-  // let [artists, setArtists] = useState([]);
   const dispatch = useDispatch();
 
-  // get Artists data from server on load
   useEffect(() => {
-    console.log("in useEffect");
     refreshArtists();
   }, []);
 
-  // Keep this method in App, as it will be used by multiple components
-  // You want to keep the code DRY (Don't Repeat Yourself!)
-  // We'll look at another way to handle this with next week's topic: Sagas.
   const refreshArtists = () => {
     axios({
       method: "GET",
       url: "/artist",
     })
       .then((response) => {
-        // response.data is the array of artists
-        console.log(response.data);
-        // TODO - update this to dispatch to Redux
-        // setArtists(response.data);
         dispatch({ type: "SET_ARTISTS", payload: response.data });
       })
       .catch((error) => {
         console.log("error on GET", error);
       });
   };
-  // POST data
+
   const addArtist = (artist) => {
     axios
       .post("/artist", { name: "artist" })
@@ -45,14 +34,29 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1 className="App-title">Famous Artists</h1>
-      </header>
-      <p>Welcome to our collection of amazing artists!</p>
-      <ArtistList />
-      <ArtistForm addArtist={addArtist} />
-    </div>
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          <h1 className="App-title">Famous Artists</h1>
+          <nav>
+            <Link to="/">Home</Link> |<Link to="/addArtist">Add Artist</Link> |
+            <Link to="/allArtists">All Artists</Link>
+          </nav>
+        </header>
+
+        <Route exact path="/">
+          <p>Welcome to our collection of amazing artists!</p>
+        </Route>
+
+        <Route path="/addArtist">
+          <ArtistForm addArtist={addArtist} />
+        </Route>
+
+        <Route path="/allArtists">
+          <ArtistList />
+        </Route>
+      </div>
+    </Router>
   );
 }
 
