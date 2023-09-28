@@ -1,35 +1,50 @@
 .App {
   text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
 }
 
 .App-header {
-  background-color: darkgreen;
+  background-color: #333;
   height: 70px;
   padding: 20px;
-  color: white;
+  color: #fff;
+  border-bottom: 2px solid #555;
 }
 
 .App-title {
-  font-size: 2em;
+  font-size: 2.2em;
+  margin: 0;
 }
 
 .App-intro {
-  font-size: large;
+  font-size: 1.2em;
+  color: #555;
 }
 
 table {
-    border-collapse: collapse;
-    width: 100%;
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 2rem;
 }
 
-th, td {
-    text-align: left;
-    padding: 8px;
+th,
+td {
+  text-align: left;
+  padding: 12px;
 }
 
-tr:nth-child(even){background-color: #f2f2f2}
+tr:nth-child(even) {
+  background-color: #8aa8a8;
+}
+
+tr:hover {
+  background-color: #b4b1b1;
+}
 
 th {
-    background-color: #353535;
-    color: #B2B2B2;
+  background-color: #444;
+  color: #ddd;
+  border-bottom: 2px solid #555;
 }
