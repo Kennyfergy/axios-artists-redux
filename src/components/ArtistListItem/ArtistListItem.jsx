@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 
-function ArtistListItem({ refreshArtists, artist }) {
+function ArtistListItem({ artist }) {
   const dispatch = useDispatch();
   const deleteArtist = () => {
     axios({
@@ -11,7 +11,7 @@ function ArtistListItem({ refreshArtists, artist }) {
     })
       .then((response) => {
         console.log("deleteArtist", response);
-        dispatch({ type: "DELETE_ARTIST", payload: artist.id });
+        dispatch({ type: "DELETE_ARTIST", payload: artist });
         // refreshArtists();
       })
       .catch((error) => {
