@@ -16,6 +16,8 @@ const artistReducer = (state = [], action) => {
       return action.payload;
     case "ADD_ARTISTS":
       return [...state, action.payload];
+    case "DELETE_ARTIST":
+      return state.filter((artist) => artist !== action.payload);
     default:
       return state;
   }

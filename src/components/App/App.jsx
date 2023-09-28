@@ -26,7 +26,7 @@ function App() {
       });
   };
 
-  const addArtist = (artist) => {
+  const addArtist = () => {
     axios
       .post("/artist", { name: "artist" })
       .then((response) => refreshArtists())
